@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -228,4 +229,236 @@
   </script>
 
 </body>
+=======
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RMmotors - Vehículos & Servicio Automotriz</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { rmRed: '#FF2800', rmDark: '#1E1E1E' }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-gray-900 text-white min-h-screen scroll-smooth">
+
+  <!-- Header / Navbar con Logo Incrementado al 100% -->
+  <header class="bg-white text-rmDark border-b-4 border-rmRed sticky top-0 z-50 shadow-md">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      
+      <!-- Logo RMmotors (Incrementado un 100% en tamaño) -->
+      <a href="#" class="flex items-center space-x-2">
+        <div class="leading-none">
+          <span class="text-6xl font-black text-rmRed tracking-tighter">RM</span>
+          <span class="text-2xl font-black text-gray-700 block tracking-widest -mt-2 uppercase">MOTORS</span>
+        </div>
+      </a>
+
+      <!-- Menú de Navegación Principal -->
+      <nav class="hidden md:flex items-center space-x-8 text-xs font-black uppercase tracking-wider text-gray-700">
+        <a href="#catalogo" class="hover:text-rmRed transition duration-200">Catálogo de Vehículos</a>
+        <a href="#mecanica" class="hover:text-rmRed transition duration-200">Mecánica en General</a>
+        <a href="#taller" class="hover:text-rmRed transition duration-200">Taller & Detallado</a>
+        <a href="#contacto" class="hover:text-rmRed transition duration-200">Contacto</a>
+      </nav>
+
+      <!-- Botón Webmaster -->
+      <a href="/admin/login.html" class="bg-rmDark hover:bg-rmRed text-white text-xs font-bold uppercase py-2 px-4 rounded transition duration-200 shadow">
+        Webmaster
+      </a>
+
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-r from-rmDark via-gray-900 to-rmDark py-16 border-b border-gray-800 text-center px-4">
+    <h2 class="text-3xl md:text-5xl font-black text-white uppercase tracking-wider mb-3">
+      Pasión por la <span class="text-rmRed">Excelencia Automotriz</span>
+    </h2>
+    <p class="text-gray-400 text-sm max-w-2xl mx-auto">
+      Venta de vehículos seleccionados, servicios mecánicos especializados, latonería, pintura y detallado profesional.
+    </p>
+  </section>
+
+  <!-- Contenido Principal -->
+  <main class="max-w-7xl mx-auto px-4 py-12 space-y-20">
+
+    <!-- Sección 1: Catálogo de Vehículos -->
+    <section id="catalogo">
+      <div class="flex items-center justify-between border-b border-gray-800 pb-4 mb-8">
+        <h3 class="text-xl font-black uppercase text-white tracking-wide border-l-4 border-rmRed pl-3">
+          Catálogo de Vehículos
+        </h3>
+      </div>
+      <div id="catalogoVehiculos" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <p class="text-sm text-gray-500 col-span-3 text-center py-8">Cargando inventario disponible...</p>
+      </div>
+    </section>
+
+    <!-- Sección 2: Servicio de Mecánica en General -->
+    <section id="mecanica" class="bg-rmDark p-8 rounded-2xl border border-gray-800 shadow-xl">
+      <div class="border-b border-gray-800 pb-4 mb-8">
+        <h3 class="text-xl font-black uppercase text-white tracking-wide border-l-4 border-rmRed pl-3">
+          Servicio de Mecánica en General
+        </h3>
+        <p class="text-xs text-gray-400 mt-1 pl-4">Diagnóstico computarizado y mantenimiento preventivo/correctivo para tu vehículo.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <div class="bg-gray-900 p-5 rounded-xl border border-gray-800 text-center space-y-3">
+          <div class="w-12 h-12 bg-rmRed/10 text-rmRed font-black text-xl rounded-full flex items-center justify-center mx-auto">01</div>
+          <h4 class="font-bold text-sm uppercase text-white">Mantenimiento Preventivo</h4>
+          <p class="text-xs text-gray-400">Cambio de aceite, filtros, bujías y entonación de motor.</p>
+        </div>
+
+        <div class="bg-gray-900 p-5 rounded-xl border border-gray-800 text-center space-y-3">
+          <div class="w-12 h-12 bg-rmRed/10 text-rmRed font-black text-xl rounded-full flex items-center justify-center mx-auto">02</div>
+          <h4 class="font-bold text-sm uppercase text-white">Frenos y Suspensión</h4>
+          <p class="text-xs text-gray-400">Reemplazo de pastillas, rectificación de discos, amortiguadores y tren delantero.</p>
+        </div>
+
+        <div class="bg-gray-900 p-5 rounded-xl border border-gray-800 text-center space-y-3">
+          <div class="w-12 h-12 bg-rmRed/10 text-rmRed font-black text-xl rounded-full flex items-center justify-center mx-auto">03</div>
+          <h4 class="font-bold text-sm uppercase text-white">Diagnóstico Escáner</h4>
+          <p class="text-xs text-gray-400">Lectura de códigos de falla, sensores y revisión del sistema eléctrico.</p>
+        </div>
+
+        <div class="bg-gray-900 p-5 rounded-xl border border-gray-800 text-center space-y-3">
+          <div class="w-12 h-12 bg-rmRed/10 text-rmRed font-black text-xl rounded-full flex items-center justify-center mx-auto">04</div>
+          <h4 class="font-bold text-sm uppercase text-white">Motor y Transmisión</h4>
+          <p class="text-xs text-gray-400">Reparaciones mayores, correas de tiempo y fluidos de caja.</p>
+        </div>
+
+      </div>
+
+      <div class="mt-8 text-center pt-4 border-t border-gray-800">
+        <a id="btnWspMecanica" target="_blank" class="inline-block bg-rmRed hover:bg-red-700 text-white text-xs font-bold py-3 px-8 rounded-lg uppercase tracking-wider transition duration-200 shadow-lg cursor-pointer">
+          Agendar Cita Mecánica por WhatsApp
+        </a>
+      </div>
+    </section>
+
+    <!-- Sección 3: Galería Taller & Detallado (Antes/Después) -->
+    <section id="taller">
+      <div class="flex items-center justify-between border-b border-gray-800 pb-4 mb-8">
+        <h3 class="text-xl font-black uppercase text-white tracking-wide border-l-4 border-rmRed pl-3">
+          Taller & Detallado (Galería)
+        </h3>
+      </div>
+      <div id="galeriaTaller" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <p class="text-sm text-gray-500 col-span-3 text-center py-8">Cargando trabajos del taller...</p>
+      </div>
+    </section>
+
+    <!-- Sección 4: Contacto -->
+    <section id="contacto" class="bg-rmDark p-8 rounded-2xl border border-gray-800 text-center space-y-4">
+      <h3 class="text-xl font-black uppercase text-white tracking-wide">¿Tienes alguna duda o consulta?</h3>
+      <p class="text-xs text-gray-400 max-w-xl mx-auto">Atendemos consultas sobre venta de vehículos, servicios de taller o citas mecánicas de forma inmediata.</p>
+      <a id="btnWspContacto" target="_blank" class="inline-block bg-green-600 hover:bg-green-700 text-white text-xs font-bold py-3 px-8 rounded-lg uppercase tracking-wider transition duration-200 shadow-lg cursor-pointer">
+        Contactar a Asesor por WhatsApp
+      </a>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-rmDark border-t border-gray-800 text-center py-6 text-xs text-gray-500">
+    <p>© 2026 RMmotors - Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    const NUMERO_WHATSAPP = "584120000000";
+
+    document.getElementById('btnWspMecanica').href = `https://wa.me/${NUMERO_WHATSAPP}?text=${encodeURIComponent('Hola, quisiera agendar una cita para Servicio de Mecánica en General.')}`;
+    document.getElementById('btnWspContacto').href = `https://wa.me/${NUMERO_WHATSAPP}?text=${encodeURIComponent('Hola, quisiera solicitar información general sobre RMmotors.')}`;
+
+    async function cargarCatalogoVehiculos() {
+      try {
+        const res = await fetch('/api/vehiculos');
+        const vehiculos = await res.json();
+        const contenedor = document.getElementById('catalogoVehiculos');
+
+        if (!Array.isArray(vehiculos) || vehiculos.length === 0) {
+          contenedor.innerHTML = '<p class="text-sm text-gray-500 col-span-3 text-center py-8">No hay vehículos disponibles en este momento.</p>';
+          return;
+        }
+
+        contenedor.innerHTML = vehiculos.map(v => `
+          <div class="bg-rmDark rounded-xl overflow-hidden border border-gray-800 hover:border-rmRed transition duration-300 shadow-lg flex flex-col justify-between">
+            <div>
+              <div class="relative">
+                <img src="${v.imagen_url}" alt="${v.marca} ${v.modelo}" class="w-full h-52 object-cover">
+                <span class="absolute top-3 right-3 bg-rmRed text-white text-[10px] font-black uppercase px-2 py-1 rounded shadow">
+                  ${v.modalidad}
+                </span>
+              </div>
+              <div class="p-5 space-y-2">
+                <div class="flex justify-between items-center text-xs text-gray-400 font-bold uppercase">
+                  <span>${v.categoria}</span>
+                  <span>${v.anio}</span>
+                </div>
+                <h4 class="text-lg font-black text-white uppercase tracking-wide">${v.marca} ${v.modelo}</h4>
+                <p class="text-xs text-gray-400">${Number(v.kilometraje).toLocaleString()} Km | Transmisión ${v.transmision}</p>
+              </div>
+            </div>
+            <div class="p-5 pt-0 flex justify-between items-center border-t border-gray-800/50 mt-4">
+              <span class="text-xl font-black text-rmRed">$${Number(v.precio).toLocaleString()}</span>
+              <a href="https://wa.me/${NUMERO_WHATSAPP}?text=${encodeURIComponent('Hola, estoy interesado en el vehículo ' + v.marca + ' ' + v.modelo)}" target="_blank" class="bg-green-600 hover:bg-green-700 text-white text-xs font-bold py-2 px-3 rounded uppercase transition">
+                Consultar
+              </a>
+            </div>
+          </div>
+        `).join('');
+      } catch (e) {
+        console.error("Error al cargar vehículos públicos:", e);
+      }
+    }
+
+    async function cargarGaleriaTaller() {
+      try {
+        const res = await fetch('/api/taller');
+        const trabajos = await res.json();
+        const contenedor = document.getElementById('galeriaTaller');
+
+        if (!Array.isArray(trabajos) || trabajos.length === 0) {
+          contenedor.innerHTML = '<p class="text-sm text-gray-500 col-span-3 text-center py-8">No hay trabajos registrados en el taller.</p>';
+          return;
+        }
+
+        contenedor.innerHTML = trabajos.map(t => `
+          <div class="bg-rmDark rounded-xl overflow-hidden border border-gray-800 p-4 space-y-3 shadow-lg">
+            <h4 class="text-sm font-black text-white uppercase tracking-wide border-b border-gray-800 pb-2">${t.titulo}</h4>
+            <span class="inline-block bg-gray-800 text-gray-300 text-[10px] font-bold px-2 py-0.5 rounded uppercase">${t.servicio}</span>
+            <p class="text-xs text-gray-400">${t.descripcion || ''}</p>
+            <div class="grid grid-cols-2 gap-2 pt-2">
+              <div>
+                <p class="text-[10px] font-bold text-gray-500 uppercase mb-1">Antes</p>
+                <img src="${t.foto_antes}" class="w-full h-28 object-cover rounded border border-gray-800">
+              </div>
+              <div>
+                <p class="text-[10px] font-bold text-gray-500 uppercase mb-1">Después</p>
+                <img src="${t.foto_despues}" class="w-full h-28 object-cover rounded border border-gray-800">
+              </div>
+            </div>
+          </div>
+        `).join('');
+      } catch (e) {
+        console.error("Error al cargar trabajos de taller:", e);
+      }
+    }
+
+    cargarCatalogoVehiculos();
+    cargarGaleriaTaller();
+  </script>
+
+</body>
+>>>>>>> Stashed changes
 </html>
