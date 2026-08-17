@@ -17,15 +17,15 @@
 </head>
 <body class="bg-gray-900 text-white min-h-screen scroll-smooth">
 
-  <!-- Header / Navbar -->
+  <!-- Header / Navbar con Logo Incrementado al 100% -->
   <header class="bg-white text-rmDark border-b-4 border-rmRed sticky top-0 z-50 shadow-md">
     <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
       
-      <!-- Logo RMmotors -->
+      <!-- Logo RMmotors (Incrementado un 100% en tamaño) -->
       <a href="#" class="flex items-center space-x-2">
         <div class="leading-none">
-          <span class="text-3xl font-black text-rmRed tracking-tighter">RM</span>
-          <span class="text-xs font-bold text-gray-700 block tracking-widest -mt-1 uppercase">motors</span>
+          <span class="text-6xl font-black text-rmRed tracking-tighter">RM</span>
+          <span class="text-2xl font-black text-gray-700 block tracking-widest -mt-2 uppercase">MOTORS</span>
         </div>
       </a>
 
@@ -143,16 +143,14 @@
   </footer>
 
   <script>
-    // === CONFIGURA TU NÚMERO DE WHATSAPP AQUÍ (Con código de país, ej: 584121234567) ===
-    const NUMERO_WHATSAPP = "584243796879";
+    const NUMERO_WHATSAPP = "584120000000";
 
-    // Configurar enlaces directos de WhatsApp
     document.getElementById('btnWspMecanica').href = `https://wa.me/${NUMERO_WHATSAPP}?text=${encodeURIComponent('Hola, quisiera agendar una cita para Servicio de Mecánica en General.')}`;
     document.getElementById('btnWspContacto').href = `https://wa.me/${NUMERO_WHATSAPP}?text=${encodeURIComponent('Hola, quisiera solicitar información general sobre RMmotors.')}`;
 
     async function cargarCatalogoVehiculos() {
       try {
-        const res = await fetch('http://127.0.0.1:5000/api/vehiculos');
+        const res = await fetch('/api/vehiculos');
         const vehiculos = await res.json();
         const contenedor = document.getElementById('catalogoVehiculos');
 
@@ -194,7 +192,7 @@
 
     async function cargarGaleriaTaller() {
       try {
-        const res = await fetch('http://127.0.0.1:5000/api/taller');
+        const res = await fetch('/api/taller');
         const trabajos = await res.json();
         const contenedor = document.getElementById('galeriaTaller');
 
