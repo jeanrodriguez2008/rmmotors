@@ -191,7 +191,7 @@
 
     async function cargarVehiculos() {
       try {
-        const res = await fetch('http://127.0.0.1:5000/api/vehiculos');
+        const res = await fetch('/api/vehiculos');
         const vehiculos = await res.json();
         const contenedor = document.getElementById('listaVehiculos');
         
@@ -223,7 +223,7 @@
 
     async function cargarTaller() {
       try {
-        const res = await fetch('http://127.0.0.1:5000/api/taller');
+        const res = await fetch('/api/taller');
         const trabajos = await res.json();
         const contenedor = document.getElementById('listaTaller');
         
@@ -277,7 +277,7 @@
           imagen_url
         };
 
-        const res = await fetch('http://127.0.0.1:5000/api/admin/vehiculos', {
+        const res = await fetch('/api/admin/vehiculos', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(data)
@@ -315,7 +315,7 @@
           foto_despues
         };
 
-        const res = await fetch('http://127.0.0.1:5000/api/admin/taller', {
+        const res = await fetch('/api/admin/taller', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(data)
@@ -335,14 +335,14 @@
 
     async function eliminarVehiculo(id) {
       if (confirm('¿Deseas eliminar este vehículo?')) {
-        await fetch(`http://127.0.0.1:5000/api/admin/vehiculos/${id}`, { method: 'DELETE' });
+        await fetch(`/api/admin/vehiculos/${id}`, { method: 'DELETE' });
         cargarVehiculos();
       }
     }
 
     async function eliminarTrabajo(id) {
       if (confirm('¿Deseas eliminar este trabajo del taller?')) {
-        await fetch(`http://127.0.0.1:5000/api/admin/taller/${id}`, { method: 'DELETE' });
+        await fetch(`/api/admin/taller/${id}`, { method: 'DELETE' });
         cargarTaller();
       }
     }
