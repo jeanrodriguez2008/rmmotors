@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RMmotors - Dashboard Webmaster</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { rmRed: '#FF2800', rmDark: '#1E1E1E' }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-gray-100 min-h-screen text-gray-800">
+
+  <header class="bg-rmDark text-white p-4 shadow-md flex justify-between items-center border-b-4 border-rmRed">
+    <h1 class="text-xl font-black tracking-wide">RMmotors <span class="text-xs font-normal text-gray-400">| Panel Webmaster</span></h1>
+    <button id="logoutBtn" class="bg-rmRed hover:bg-red-700 px-4 py-2 rounded text-xs font-bold uppercase transition">Cerrar Sesión</button>
+  </header>
+
+  <div class="max-w-7xl mx-auto p-6 space-y-8">
+
+    <div id="statusMsg" class="hidden text-xs font-bold p-3 rounded"></div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+      <!-- Formulario Vehículos -->
+      <div class="bg-white p-6 rounded-lg shadow border border-gray-200">
+        <h2 class="text-lg font-black text-rmDark mb-4 border-b pb-2 uppercase">Publicar Vehículo (Catálogo)</h2>
+        
+        <form id="vehiculoForm" class="space-y-4">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Marca</label>
+              <input type="text" id="vMarca" placeholder="Ej: Toyota" required class="w-full border p-2 text-xs rounded">
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Modelo</label>
+              <input type="text" id="vModelo" placeholder="Ej: Fortuner" required class="w-full border p-2 text-xs rounded">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div>
+              <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Año</label>
+              <input type="number" id="vAnio" placeholder="2022" required class="w-full border p-2 text-xs rounded">
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Precio ($)</label>
+              <input type="number" step="0.01" id="vPrecio" placeholder="45000" required class="w-full border p-2 text-xs rounded">
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Km</label>
+              <input type="number" id="vKm" placeholder="10000" required class="w-full border p-2 text-xs rounded">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Modalidad</label>
+              <select id="vModalidad" class="w-full border p-2 text-xs rounded">
+                <option value="Venta">Venta</option>
+                <option value="Financiamiento">Financiamiento</option>
+                <option value="Consignación">Consignación</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Categoría</label>
+              <select id="vCategoria" class="w-full border p-2 text-xs rounded">
+                <option value="Camioneta">Camioneta</option>
+                <option value="Sedán">Sedán</option>
+                <option value="Rústico">Rústico</option>
+                <option value="Blindado">Blindado</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Fotografía del Vehículo</label>
+            <input type="file" id="vFoto" accept="image/*" required class="w-full text-xs">
+          </div>
+
+          <button type="submit" id="btnGuardarV" class="w-full bg-rmDark hover:bg-rmRed text-white py-3 rounded font-bold text-xs uppercase transition">
+            Guardar y Publicar
+          </button>
+        </form>
+      </div>
+
+      <!-- Formulario Taller -->
+      <div class="bg-white p-6 rounded-lg shadow border border-gray-200">
+        <h2 class="text-lg font-black text-rmDark mb-4 border-b pb-2 uppercase">Publicar Trabajo Taller (Antes / Después)</h2>
+        
+        <form id="tallerForm" class="space-y-4">
+          <div>
+            <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Título del Trabajo</label>
+            <input type="text" id="tTitulo" placeholder="Ej: Restauración Frontal Mustang" required class="w-full border p-2 text-xs rounded">
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Servicio Realizado</label>
+            <select id="tServicio" class="w-full border p-2 text-xs rounded">
+              <option value="Latonería y Pintura">Latonería y Pintura</option>
+              <option value="Detallado Profesional">Detallado Profesional</option>
+              <option value="Mecánica General">Mecánica General</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Descripción Breve</label>
+            <textarea id="tDescripcion" rows="2" placeholder="Detalles del trabajo realizado..." class="w-full border p-2 text-xs rounded"></textarea>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Foto Antes</label>
+              <input type="file" id="tFotoAntes" accept="image/*" required class="w-full text-xs">
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Foto Después</label>
+              <input type="file" id="tFotoDespues" accept="image/*" required class="w-full text-xs">
+            </div>
+          </div>
+
+          <button type="submit" id="btnGuardarT" class="w-full bg-rmDark hover:bg-rmRed text-white py-3 rounded font-bold text-xs uppercase transition">
+            Guardar Trabajo
+          </button>
+        </form>
+      </div>
+
+    </div>
+
+    <!-- Lista de Vehículos Publicados -->
+    <div class="bg-white p-6 rounded-lg shadow border border-gray-200">
+      <h2 class="text-lg font-black text-rmDark mb-4 border-b pb-2 uppercase">Vehículos Publicados</h2>
+      <div id="listaVehiculos" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+    </div>
+
+    <!-- Lista de Trabajos de Taller Publicados -->
+    <div class="bg-white p-6 rounded-lg shadow border border-gray-200">
+      <h2 class="text-lg font-black text-rmDark mb-4 border-b pb-2 uppercase">Trabajos de Taller Publicados</h2>
+      <div id="listaTaller" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+    </div>
+
+  </div>
+
+  <script>
+    const token = localStorage.getItem('rm_token');
+    if (!token) window.location.href = '/admin/login.html';
+
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+      localStorage.removeItem('rm_token');
+      window.location.href = '/admin/login.html';
+    });
+
+    const statusMsg = document.getElementById('statusMsg');
+
+    function mostrarMensaje(texto, esError = false) {
+      statusMsg.textContent = texto;
+      statusMsg.className = esError 
+        ? 'text-xs font-bold p-3 rounded mb-4 bg-red-100 text-red-700 block' 
+        : 'text-xs font-bold p-3 rounded mb-4 bg-green-100 text-green-700 block';
+    }
+
+    const toBase64 = file => new Promise((resolve, reject) => {
+      const img = new Image();
+      const reader = new FileReader();
+      
+      reader.onload = e => {
+        img.src = e.target.result;
+        img.onload = () => {
+          const canvas = document.createElement('canvas');
+          const MAX_WIDTH = 800;
+          const scaleSize = MAX_WIDTH / img.width;
+          
+          canvas.width = (img.width > MAX_WIDTH) ? MAX_WIDTH : img.width;
+          canvas.height = (img.width > MAX_WIDTH) ? img.height * scaleSize : img.height;
+
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+          
+          resolve(canvas.toDataURL('image/jpeg', 0.7));
+        };
+      };
+      reader.onerror = error => reject(error);
+      reader.readAsDataURL(file);
+    });
+
+    async function cargarVehiculos() {
+      try {
+        const res = await fetch('http://127.0.0.1:5000/api/vehiculos');
+        const vehiculos = await res.json();
+        const contenedor = document.getElementById('listaVehiculos');
+        
+        if (!Array.isArray(vehiculos) || vehiculos.length === 0) {
+          contenedor.innerHTML = '<p class="text-xs text-gray-500 col-span-3">No hay vehículos registrados.</p>';
+          return;
+        }
+
+        contenedor.innerHTML = vehiculos.map(v => `
+          <div class="border rounded-lg overflow-hidden shadow-sm bg-white">
+            <img src="${v.imagen_url}" class="w-full h-40 object-cover">
+            <div class="p-4 space-y-2">
+              <div class="flex justify-between items-center">
+                <span class="text-xs font-bold bg-rmRed text-white px-2 py-0.5 rounded">${v.modalidad}</span>
+                <span class="text-xs font-bold text-gray-500">${v.anio}</span>
+              </div>
+              <h3 class="font-bold text-sm text-rmDark uppercase">${v.marca} ${v.modelo}</h3>
+              <p class="text-xs text-gray-600 font-bold">$${Number(v.precio).toLocaleString()} | ${Number(v.kilometraje).toLocaleString()} Km</p>
+              <button onclick="eliminarVehiculo(${v.id})" class="w-full mt-2 bg-gray-200 hover:bg-red-600 hover:text-white text-gray-800 text-xs py-1.5 rounded font-bold transition">
+                Eliminar
+              </button>
+            </div>
+          </div>
+        `).join('');
+      } catch (e) {
+        console.error("Error al cargar lista:", e);
+      }
+    }
+
+    async function cargarTaller() {
+      try {
+        const res = await fetch('http://127.0.0.1:5000/api/taller');
+        const trabajos = await res.json();
+        const contenedor = document.getElementById('listaTaller');
+        
+        if (!Array.isArray(trabajos) || trabajos.length === 0) {
+          contenedor.innerHTML = '<p class="text-xs text-gray-500 col-span-3">No hay trabajos registrados en la galería del taller.</p>';
+          return;
+        }
+
+        contenedor.innerHTML = trabajos.map(t => `
+          <div class="border rounded-lg overflow-hidden shadow-sm bg-white p-4 space-y-3">
+            <h3 class="font-bold text-sm text-rmDark uppercase border-b pb-1">${t.titulo}</h3>
+            <span class="inline-block text-xs font-bold bg-gray-200 text-gray-700 px-2 py-0.5 rounded">${t.servicio}</span>
+            <div class="grid grid-cols-2 gap-2">
+              <div>
+                <p class="text-[10px] font-bold text-gray-500 uppercase">Antes</p>
+                <img src="${t.foto_antes}" class="w-full h-24 object-cover rounded">
+              </div>
+              <div>
+                <p class="text-[10px] font-bold text-gray-500 uppercase">Después</p>
+                <img src="${t.foto_despues}" class="w-full h-24 object-cover rounded">
+              </div>
+            </div>
+            <button onclick="eliminarTrabajo(${t.id})" class="w-full mt-2 bg-gray-200 hover:bg-red-600 hover:text-white text-gray-800 text-xs py-1.5 rounded font-bold transition">
+              Eliminar
+            </button>
+          </div>
+        `).join('');
+      } catch (e) {
+        console.error("Error al cargar taller:", e);
+      }
+    }
+
+    document.getElementById('vehiculoForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = document.getElementById('btnGuardarV');
+      btn.disabled = true;
+
+      try {
+        const fotoFile = document.getElementById('vFoto').files[0];
+        const imagen_url = await toBase64(fotoFile);
+
+        const data = {
+          marca: document.getElementById('vMarca').value,
+          modelo: document.getElementById('vModelo').value,
+          anio: parseInt(document.getElementById('vAnio').value),
+          precio: parseFloat(document.getElementById('vPrecio').value),
+          kilometraje: parseInt(document.getElementById('vKm').value),
+          transmision: 'Automático',
+          modalidad: document.getElementById('vModalidad').value,
+          categoria: document.getElementById('vCategoria').value,
+          imagen_url
+        };
+
+        const res = await fetch('http://127.0.0.1:5000/api/admin/vehiculos', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+
+        if (res.ok) {
+          mostrarMensaje('Vehículo publicado correctamente.');
+          document.getElementById('vehiculoForm').reset();
+          cargarVehiculos();
+        }
+      } catch (err) {
+        mostrarMensaje('Error de conexión al guardar vehículo.', true);
+      } finally {
+        btn.disabled = false;
+      }
+    });
+
+    document.getElementById('tallerForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = document.getElementById('btnGuardarT');
+      btn.disabled = true;
+
+      try {
+        const fAntes = document.getElementById('tFotoAntes').files[0];
+        const fDespues = document.getElementById('tFotoDespues').files[0];
+
+        const foto_antes = await toBase64(fAntes);
+        const foto_despues = await toBase64(fDespues);
+
+        const data = {
+          titulo: document.getElementById('tTitulo').value,
+          servicio: document.getElementById('tServicio').value,
+          descripcion: document.getElementById('tDescripcion').value,
+          foto_antes,
+          foto_despues
+        };
+
+        const res = await fetch('http://127.0.0.1:5000/api/admin/taller', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+
+        if (res.ok) {
+          mostrarMensaje('Trabajo de taller publicado correctamente.');
+          document.getElementById('tallerForm').reset();
+          cargarTaller();
+        }
+      } catch (err) {
+        mostrarMensaje('Error de conexión al guardar trabajo de taller.', true);
+      } finally {
+        btn.disabled = false;
+      }
+    });
+
+    async function eliminarVehiculo(id) {
+      if (confirm('¿Deseas eliminar este vehículo?')) {
+        await fetch(`http://127.0.0.1:5000/api/admin/vehiculos/${id}`, { method: 'DELETE' });
+        cargarVehiculos();
+      }
+    }
+
+    async function eliminarTrabajo(id) {
+      if (confirm('¿Deseas eliminar este trabajo del taller?')) {
+        await fetch(`http://127.0.0.1:5000/api/admin/taller/${id}`, { method: 'DELETE' });
+        cargarTaller();
+      }
+    }
+
+    cargarVehiculos();
+    cargarTaller();
+  </script>
+
+</body>
+</html>

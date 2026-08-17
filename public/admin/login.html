@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RMmotors - Acceso Webmaster</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { rmRed: '#FF2800', rmDark: '#1E1E1E' }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-rmDark h-screen flex items-center justify-center p-4">
+
+  <div class="bg-white rounded-lg shadow-2xl p-8 max-w-md w-full border-t-8 border-rmRed">
+    
+    <!-- Logo clickeable para volver -->
+    <div class="text-center mb-6">
+      <a href="/" title="Volver al inicio" class="inline-block group">
+        <h1 class="text-3xl font-black text-rmDark tracking-wider group-hover:text-rmRed transition duration-200">RMmotors</h1>
+      </a>
+      <p class="text-xs font-bold text-gray-500 uppercase mt-1">Panel de Control Webmaster</p>
+    </div>
+
+    <div class="space-y-4">
+      <div>
+        <label class="block text-xs font-bold uppercase text-gray-700 mb-1">Usuario</label>
+        <input type="text" id="username" value="admin" class="w-full p-3 border border-gray-300 rounded focus:outline-none focus:border-rmRed text-sm">
+      </div>
+
+      <div>
+        <label class="block text-xs font-bold uppercase text-gray-700 mb-1">Contraseña</label>
+        <input type="password" id="password" class="w-full p-3 border border-gray-300 rounded focus:outline-none focus:border-rmRed text-sm">
+      </div>
+
+      <div id="msgBox" class="hidden text-xs font-bold text-center p-2 rounded"></div>
+
+      <button type="button" id="btnIngresar" class="w-full bg-rmRed text-white py-3 rounded font-bold uppercase text-sm hover:bg-red-700 transition duration-200">
+        Iniciar Sesión
+      </button>
+
+      <!-- Botón de retorno al sitio principal -->
+      <a href="/" class="block text-center w-full bg-gray-100 text-gray-700 py-2.5 rounded font-bold uppercase text-xs hover:bg-gray-200 transition duration-200 border border-gray-200">
+        ← Volver al Sitio Principal
+      </a>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('btnIngresar').addEventListener('click', async () => {
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      const msgBox = document.getElementById('msgBox');
+
+      try {
+        const res = await fetch('http://127.0.0.1:5000/api/admin/login', {
+          method: 'POST',
+          headers: { 
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ username, password })
+        });
+
+        const data = await res.json();
+
+        if (res.ok) {
+          localStorage.setItem('rm_token', data.token);
+          window.location.href = '/admin/dashboard.html';
+        } else {
+          msgBox.textContent = data.detail || 'Usuario o contraseña incorrectos.';
+          msgBox.className = 'text-xs font-bold text-center p-2 rounded bg-red-100 text-red-700 block';
+        }
+      } catch (e) {
+        msgBox.textContent = 'Error de conexión con el servidor Python.';
+        msgBox.className = 'text-xs font-bold text-center p-2 rounded bg-red-100 text-red-700 block';
+      }
+    });
+  </script>
+
+</body>
+</html>
